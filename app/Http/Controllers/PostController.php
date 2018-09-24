@@ -25,6 +25,8 @@ class PostController extends Controller
         // dd($posts->toArray());
             // デバック法（配列に格納して表示）
         return view('posts.index', ['posts' => $posts]);
+            // viewヘルパへの第一引数は、routesのビューファイルと対応。『〜.〜』でネストした記述に対応。第二引数は、ビューで使用するデータの配列。
+            // 第二引数は配列以外に、compact関数、withメソッドでの記述が可能。
     }
 
     /**
