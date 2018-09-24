@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Post;
 
 class PostController extends Controller
 {
@@ -12,9 +13,18 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+        // 定義内で使用しないなら、引数は渡される必要はない。
     {
-        //
-        return view('posts.index');
+        // $posts = \App\Post::all();
+            // 『use』で定義していない場合の記述
+        $posts = Post::all();
+            // 『use』で定義している場合の記述
+
+        // dd($posts);
+            // デバック法（オブジェクト）
+        // dd($posts->toArray());
+            // デバック法（配列に格納して表示）
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
