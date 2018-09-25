@@ -13,7 +13,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-        // 定義内で使用しないなら、引数は渡される必要はない。
+        // ルーティングのURLパラメータで値を渡していないなら、引数は必要はない。
     {
         // $posts = \App\Post::all();
             // 『use』で定義していない場合の記述
@@ -34,8 +34,29 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
             // 下記と同じ
         // return view('posts.index', ['posts' => $posts]);
+        // return view('posts.index')->with('posts', $posts);
             // viewヘルパへの第一引数は、routesのビューファイルと対応。『〜.〜』でネストした記述に対応。第二引数は、ビューで使用するデータの配列。
             // 第二引数は配列以外に、compact関数、withメソッドでの記述が可能。
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Post $post)
+        // ルーティングのURLパラメータで値を渡しているので、引数が必要。
+    // public function show($id)
+        // 引数を『$id』で渡す場合。
+    {
+        // showの引数が『$id』ではないなら下記3つは不要。無しでviewに渡せる。
+        // $post = Post::find($id);
+        // $post = Post::findOrFail($id);
+            // $idでデータが見つからなかった場合に例外を返す場合。
+        // $post = Post::find($post);
+
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -55,17 +76,6 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
     {
         //
     }
