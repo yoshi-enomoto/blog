@@ -13,7 +13,18 @@
     <ul>
         {{-- レコードのカラムに空がある場合の構造 --}}
         @forelse ($posts as $post)
-            <li><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></li>
+            <li>
+                <a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
+
+                {{-- 削除を確認無しで行う場合 --}}
+                <form action="{{ route('posts.destroy', $post) }}" method="post">
+                    {{ csrf_field() }}
+                    {{ method_field('delete') }}
+                        <input type="submit" class="del" value="[x]">
+                            {{-- 削除表示がボタンとなる。 --}}
+                </form>
+
+            </li>
                 {{-- 推奨：『artisan route:list』に表示されるnameで記載可能。
                       →動的に対応しているので、静的なURLが変更されてもnameの紐付きは変わらない為。
                       →routeのnameは指定が可能。（resourceで生成時、自動で付与されている）
