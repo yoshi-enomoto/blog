@@ -21,10 +21,20 @@
 
         {{-- 入力フォーム数＋ボタン分の<p>タグを先に生成。その後整形。 --}}
         <p>
-            <input type="text" name="title" placeholder="enter title">
+            <input type="text" name="title" placeholder="enter title" value="{{ old('title') }}">
+                {{-- 『old()』で、エラーが出てフォームに戻る際に元の値が保持される --}}
+            @if ($errors->has('title'))
+                {{-- エラーメッセージは『$errors』内の対応プロパティに入ってくる --}}
+                <span class="error">{{ $errors->first('title') }}</span>
+                    {{-- エラーは複数入ってくる可能性があるので、『first』でエラーが無くなるまで、最初のものだけを表示してあげる。 --}}
+            @endif
         </p>
         <p>
-            <textarea name="body" placeholder="enter body"></textarea>
+            <textarea name="body" placeholder="enter body">{{ old('body') }}</textarea>
+            @if ($errors->has('body'))
+                <span class="error">{{ $errors->first('body') }}</span>
+            @endif
+
         </p>
         <p>
             <input type="submit" value="Add">
