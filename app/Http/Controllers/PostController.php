@@ -78,8 +78,23 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+        // フォームから送信されたデータはRequest型で渡ってくる。
     {
-        //
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        // リダイレクト：ルーティングを通り、コントローラ→ビューと流れる。
+        //  ＝ビュー内の変数が表示可能。
+        return redirect()->route('posts.index');
+
+        // 『view』はビューページのみを出力する（レンダリング）
+        //  ＝ビュー内の変数情報は渡されていない。
+        // 今回、returnに『view』を用いる場合、『$posts』情報が必要となる。
+        // $posts = Post::latest()->get();
+
+        // return view('posts.index', compact('posts'));
     }
 
     /**
