@@ -3,7 +3,12 @@
 @section('title', $post->title)
 
 @section('content')
-    <h1>{{ $post->title }}</h1>
+    <h1>
+      <a href="{{ route('posts.index') }}" class="header-menu">back</a>
+      {{-- <a href="{{ url('posts') }}" class="header-menu">BACK</a> --}}
+          {{-- urlの引数は静的な文字列が対応する（現在、『/posts』がindexページに値する --}}
+      {{ $post->title }}
+    </h1>
     <p>{!! nl2br(e($post->body)) !!}</p>
       {{-- 基本は『{{~~}}』により、htmlエンティティにエスケープするべき。
            →上記を行うと特殊文字が単なる文字列変換される
