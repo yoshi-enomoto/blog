@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <title>Blog Posts</title>
-  <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-  <div class="container">
+@extends('layouts.default')
+
+@section('title', $post->title)
+
+@section('content')
     <h1>{{ $post->title }}</h1>
     <p>{!! nl2br(e($post->body)) !!}</p>
       {{-- 基本は『{{~~}}』により、htmlエンティティにエスケープするべき。
@@ -32,7 +28,4 @@
       {{-- 『{!!〜〜!!}』：中身をエスケープしないで値を出力する命令（データ・文章の改行をbrタグに変換したい為） --}}
       {{-- 『e()』：指定された文字列にhtmlspecialcharsを実行します。 --}}
       {{-- 『nl2br()』：改行文字をbrタグに変換 --}}
-
-  </div>
-</body>
-
+@endsection
