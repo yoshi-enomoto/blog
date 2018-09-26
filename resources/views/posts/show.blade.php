@@ -8,7 +8,6 @@
 <body>
   <div class="container">
     <h1>{{ $post->title }}</h1>
-    <p>{{ $post->body }}</p>
     <p>{!! nl2br(e($post->body)) !!}</p>
       {{-- 基本は『{{~~}}』により、htmlエンティティにエスケープするべき。
            →上記を行うと特殊文字が単なる文字列変換される

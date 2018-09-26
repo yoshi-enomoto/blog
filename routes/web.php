@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('posts', 'PostController');
+  // 『resource』で生成した場合、自動的にnameの設定がされている。
   // 第三引数にonly、exceptの使用が可能
   // 『Route::resource('hoge', 'HogeController', ['only' => ['index', 'create', 'edit', 'store', 'destroy']]);』
 

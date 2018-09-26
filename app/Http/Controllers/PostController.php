@@ -47,6 +47,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
         // ルーティングのURLパラメータで値を渡しているので、引数が必要。
+        // ルーティングで『post』を渡している場合。
+        // →暗黙的にモデルをデータに結びつけられる Implicit Binding という仕組み。
     // public function show($id)
         // 引数を『$id』で渡す場合。
     {
