@@ -41,6 +41,11 @@ textarea {
 }
 
 /* submitボタンのサイズ変更 */
-input[type="submit"] {
+/*input[type="submit"] {
   font-size: 20px;
+}
+*/
+
+.del {
+  font-size: 12px;
 }
