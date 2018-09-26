@@ -6,7 +6,10 @@
     {{-- 短い場合は上記の様にすると、1行で書ける --}}
 
 @section('content')
-    <h1>Blog Posts</h1>
+    <h1>
+        <a href="{{ route('posts.create') }}" class="header-menu">New Post</a>
+        Blog Posts
+    </h1>
     <ul>
         {{-- レコードのカラムに空がある場合の構造 --}}
         @forelse ($posts as $post)
