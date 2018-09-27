@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+    // 新規作成したRequestクラスにより、使用しなくなった為、コメアウト実行。
 use \App\Post;
+// 新たに作成したStorePostRequestクラスを短い記述で使用する為にこれを記述。
+use \App\Http\Requests\StorePostRequest;
+use \App\Http\Requests\UpdatePostRequest;
 
 class PostController extends Controller
 {
@@ -77,13 +81,16 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
+        // 新たに作成したStorePostRequestクラスを使用。変数の記述はそのまま。
+    // public function store(Request $request)
         // フォームから送信されたデータはRequest型で渡ってくる。
     {
-        $this->validate($request, [
-            'title' => 'required|min:3',
-            'body' => 'required'
-        ]);
+        // requestファイル内に移動
+        // $this->validate($request, [
+        //     'title' => 'required|min:3',
+        //     'body' => 'required'
+        // ]);
 
         $post = new Post();
         $post->title = $request->title;
@@ -120,7 +127,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
+    // public function update(Request $request, Post $post)
         // 引数には、 form からの Request と、actionに渡す Post 型の post を設定する。
     {
         // dd($post);
