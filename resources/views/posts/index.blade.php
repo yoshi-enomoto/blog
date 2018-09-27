@@ -15,6 +15,7 @@
         @forelse ($posts as $post)
             <li>
                 <a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
+                <a href="{{ route('posts.edit', $post) }}" classs="edit">[edit]</a>
 
                 {{-- リンク先をダミーにして、formで行う --}}
                 {{-- その場合、aタグとformタグを紐付ける記述（属性）を書く --}}

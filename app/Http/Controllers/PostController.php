@@ -108,9 +108,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -120,9 +120,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
+        // 引数には、 form からの Request と、actionに渡す Post 型の post を設定する。
     {
-        //
+        // dd($post);
+        // ここでチェックをすると分かるとおり、まだ『$post』には更新値が入っていない。
+        $post->title = $request->title;
+        $post->body = $request->body;
+        // dd($post);
+        // ここでチェックでは、『$post』の規定の場所に更新値が入っている。
+        $post->save();
+        return redirect()->route('posts.index');
     }
 
     /**
