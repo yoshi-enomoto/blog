@@ -35,4 +35,40 @@
       {{-- 『{!!〜〜!!}』：中身をエスケープしないで値を出力する命令（データ・文章の改行をbrタグに変換したい為） --}}
       {{-- 『e()』：指定された文字列にhtmlspecialcharsを実行します。 --}}
       {{-- 『nl2br()』：改行文字をbrタグに変換 --}}
+
+    <h2>Comments</h2>
+    <ul>
+        @forelse ($post->comments as $comment)
+            <li>
+                {{ $comment->body }}
+                <a href="#" class="del" data-id="{{ $comment->id }}">[x]</a>
+                <form action="{{ route('posts.comments.destroy', [$post, $comment]) }}" method="post" id="form_{{ $comment->id }}">
+                    {{-- パラメータは2つ渡す必要がある（route参照） --}}
+                    {{-- 渡す際、第二引数に全て渡す記述にする必要あり『[〜]とする事！』 --}}
+                    {{ csrf_field() }}
+                    {{ method_field('delete') }}
+                </form>
+            </li>
+        @empty
+            <li>No comments yet</li>
+        @endforelse
+    </ul>
+
+    <form action="{{ route('posts.comments.store', $post) }}" method="post">
+        {{-- 第２引数に該当するパラメータを指定することで渡すことが可能。（routeメソッド） --}}
+        {{-- あくまでも、括弧の中に記述する！ --}}
+        {{ csrf_field() }}
+        <p>
+            <input type="text" name="body" placeholder="enter comment" value="{{ old('body') }}">
+            @if ($errors->has('body'))
+                <span class="error">{{ $errors->first('body') }}</span>
+            @endif
+        </p>
+        <p>
+            <input type="submit" value="Add Comment">
+        </p>
+    </form>
+    <script src="/js/main.js"></script>
+        {{-- 削除機能に対応するjsを読み込ませる --}}
+        {{-- indexのものがそのまま転用可能 --}}
 @endsection
