@@ -8,6 +8,7 @@ use \App\Post;
 // 新たに作成したStorePostRequestクラスを短い記述で使用する為にこれを記述。
 use \App\Http\Requests\StorePostRequest;
 use \App\Http\Requests\UpdatePostRequest;
+use \App\Comment;
 
 class PostController extends Controller
 {
@@ -49,7 +50,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post, Comment $comment)
         // ルーティングのURLパラメータで値を渡しているので、引数が必要。
         // ルーティングで『post』を渡している場合。
         // →暗黙的にモデルをデータに結びつけられる Implicit Binding という仕組み。

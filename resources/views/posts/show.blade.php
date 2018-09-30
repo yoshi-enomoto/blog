@@ -35,4 +35,28 @@
       {{-- 『{!!〜〜!!}』：中身をエスケープしないで値を出力する命令（データ・文章の改行をbrタグに変換したい為） --}}
       {{-- 『e()』：指定された文字列にhtmlspecialcharsを実行します。 --}}
       {{-- 『nl2br()』：改行文字をbrタグに変換 --}}
+
+    <h2>Comments</h2>
+    <ul>
+        @forelse ($post->comments as $comment)
+            <li>{{ $comment->body }}</li>
+        @empty
+            <li>No comments yet</li>
+        @endforelse
+    </ul>
+
+    <form action="{{ route('posts.comments.store', $post) }}" method="post">
+        {{-- 第２引数に該当するパラメータを指定することで渡すことが可能。（routeメソッド） --}}
+        {{-- あくまでも、括弧の中に記述する！ --}}
+        {{ csrf_field() }}
+        <p>
+            <input type="text" name="body" placeholder="enter comment" value="{{ old('body') }}">
+            @if ($errors->has('body'))
+                <span class="error">{{ $erros->first('body') }}</span>
+            @endif
+        </p>
+        <p>
+            <input type="submit" value="Add Comment">
+        </p>
+    </form>
 @endsection
