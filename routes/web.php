@@ -31,4 +31,4 @@ Route::resource('posts', 'PostController');
 // Route::patch('/posts/{post}', 'PostsController@update');
 // Route::delete('/posts/{post}', 'PostsController@destroy');
 
-Route::resource('posts.comment', 'CommentController', ['only' => ['create', 'destroy']]);
+Route::resource('posts.comments', 'CommentController', ['only' => ['store', 'destroy']]);
