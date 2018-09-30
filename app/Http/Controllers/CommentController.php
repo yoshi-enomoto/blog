@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+    // request型を専用に作成した為、削除&書き換え
+use \App\Http\Requests\StoreCommentRequest;
 use \App\Post;
 use \App\Comment;
 
@@ -15,7 +17,7 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Post $post)
+    public function store(StoreCommentRequest $request, Post $post)
         // 渡されるのは、$request と $postである！
     {
         // $comment->body = $request->body;
