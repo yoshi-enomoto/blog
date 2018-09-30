@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use \App\Comment;
+// use \App\comment;
+    // 『use』を用いてリレーションを簡略化して記述しようと思ったが、失敗した。原因追求できず。
 
 // モデル生成時、名前は大文字にする！
 class post extends Model
@@ -18,6 +19,6 @@ class post extends Model
     // $post->comments
       // →$postからcommentsへアクセスする。belongsかhasかで、メソッド名は単数・複数となる！
     public function comments() {
-      return $this->hasMany('Comment');
+      return $this->hasMany('App\Comment');
     }
 }

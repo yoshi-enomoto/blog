@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use \App\Post;
 
 // モデル生成時、名前は大文字にする！
 class comment extends Model
@@ -14,6 +13,6 @@ class comment extends Model
       // $comment->post
       // →$commentからpostへアクセスする。belongsかhasかで、メソッド名は単数・複数となる！
     public function post() {
-      return $this->belongsTo('Post');
+      return $this->belongsTo('App\Post');
     }
 }
