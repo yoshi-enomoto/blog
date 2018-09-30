@@ -18,16 +18,20 @@ class CommentController extends Controller
     public function store(Request $request, Post $post)
         // 渡されるのは、$request と $postである！
     {
-        // $comment = new Comment();
         // $comment->body = $request->body;
         // $comment->save();
 
+        // $comment = new Comment();
+            // 直接値を渡すことが可能なので、下記のようにも記述できる。
         $comment = new Comment(['body' => $request->body]);
         $post->comments()->save($comment);
+            // $postに紐付いた形でセーブの意味。
+            // 『->comments()』はモデルPostで定めたメソッド。
 
         return redirect()->route('posts.show', $post);
             // 第２引数に該当するパラメータを指定することで渡すことが可能。（routeメソッド）
-
+            // 違うアクションに対してリダイレクトさせる場合、下記もある。
+            // return redirect()->action('PostController@show',$post);
     }
 
     /**
@@ -36,9 +40,13 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post, Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return redirect()->route('posts.show', $post);
+            // 元の画面に戻るだけだったら単に back()でも良い
+            // return redirect()->back();
     }
 
     // /**
