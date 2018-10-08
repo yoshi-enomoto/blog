@@ -97,6 +97,8 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->body = $request->body;
         $post->save();
+        // $post = Post::create( $request->all() );
+            // 1行で書けるが、許可してないパラメータまでも受け取り、場合によっては危険。(fillableで許可することとは異なる)
 
         // リダイレクト：ルーティングを通り、コントローラ→ビューと流れる。
         //  ＝ビュー内の変数が表示可能。
