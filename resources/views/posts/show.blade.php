@@ -7,7 +7,8 @@
         <a href="{{ route('posts.index') }}" class="header-menu">back</a>
         {{-- <a href="{{ url('posts') }}" class="header-menu">BACK</a> --}}
             {{-- urlの引数は静的な文字列が対応する（現在、『/posts』がindexページに値する --}}
-        {{ $post->title }}
+        {{ $post->title }}<br>
+        作成日時：{{ $post->created_at->format('Y/m/d') }}
     </h1>
     {{-- <p>{{ $post->body }}</p> --}}
       {{-- 上記の記述だと、カラム内に改行が入っていた場合、改行が認識されない --}}
@@ -35,6 +36,15 @@
       {{-- 『{!!〜〜!!}』：中身をエスケープしないで値を出力する命令（データ・文章の改行をbrタグに変換したい為） --}}
       {{-- 『e()』：指定された文字列にhtmlspecialcharsを実行します。 --}}
       {{-- 『nl2br()』：改行文字をbrタグに変換 --}}
+
+
+      {{-- 作成日が今日より昔なら赤字、そうでなければ黒字で表示 --}}
+        @if ($dataCreated->gt($dataToday))
+          <p>{!! nl2br(e($post->body)) !!}</p>
+        @else
+          <p style="color: red;">{!! nl2br(e($post->body)) !!}</p>
+        @endif
+
 
     <h2>Comments</h2>
     <ul>

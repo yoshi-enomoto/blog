@@ -67,7 +67,41 @@ class PostController extends Controller
             // $idでデータが見つからなかった場合に例外を返す場合。
         // $post = Post::find($post);
 
-        return view('posts.show', compact('post'));
+
+    // Carbonによるテストソーン
+        // $dt = new Carbon('today');
+        // $dt = Carbon::now();
+        $dataToday = Carbon::now()->format('Y-m-d');
+            // stringで取得
+        $dataToday = Carbon::create(2000, 12, 12);
+            // objectで取得
+
+        $dataCreated = $post->created_at;
+            // objectで取得
+            // いつもの見にくい形式
+
+        $dataCreated = $post->created_at->format('Y-m-d');
+            // stringで取得
+            // そのバリューのみ取得
+        $dataCreated = Carbon::create(2000, 11, 12);
+
+        // dd($dataCreated);
+
+        // dd(gettype($dataToday));
+            // 型の判断
+
+        var_dump($dataCreated->gt($dataToday));
+            // objectで比較する必要あり
+
+        // var_dump($dt1->gt($dt2));
+            // 「より大きい」：左が右より大きいか＝右の日付が後か
+        // var_dump($dt1->gte($dt2));
+            // 「以上」
+        // var_dump($dt1->lt($dt2));
+            // 「より小さい」：左が右より小さいか＝右の日付が先か
+    // Carbonによるテストソーン
+
+        return view('posts.show', compact('post', 'dataCreated', 'dataToday'));
     }
 
     /**
