@@ -9,6 +9,7 @@ use \App\Post;
 use \App\Http\Requests\StorePostRequest;
 use \App\Http\Requests\UpdatePostRequest;
 use \App\Comment;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -36,7 +37,10 @@ class PostController extends Controller
         // dd($posts->toArray());
             // デバック法（配列に格納して表示）
 
-        return view('posts.index', compact('posts'));
+        $dt = Carbon::now();
+        $dt = Carbon::now('Asia/Tokyo');
+
+        return view('posts.index', compact('posts', 'dt'));
             // 下記と同じ
         // return view('posts.index', ['posts' => $posts]);
         // return view('posts.index')->with('posts', $posts);

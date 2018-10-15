@@ -9,6 +9,7 @@
     <h1>
         <a href="{{ route('posts.create') }}" class="header-menu">New Post</a>
         Blog Posts
+        {{ $dt }}
     </h1>
     <ul>
         {{-- レコードのカラムに空がある場合の構造 --}}
