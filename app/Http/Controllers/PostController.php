@@ -142,6 +142,8 @@ class PostController extends Controller
         // リダイレクト：ルーティングを通り、コントローラ→ビューと流れる。
         //  ＝ビュー内の変数が表示可能。
         return redirect()->route('posts.index');
+        // return redirect('/');
+            // 引数に渡すことで、そこにアクセスする。
 
         // 『view』はビューページのみを出力する（レンダリング）
         //  ＝ビュー内の変数情報は渡されていない。
