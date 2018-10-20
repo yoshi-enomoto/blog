@@ -104,6 +104,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    // 同じ『body』カラムを書き換えたい場合、Requestファイル側で設定する
+    'attributes' => [
+        'body' => 'コメント',
+    ],
 
 ];

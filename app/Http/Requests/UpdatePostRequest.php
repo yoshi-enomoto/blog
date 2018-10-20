@@ -38,4 +38,13 @@ class UpdatePostRequest extends FormRequest
             'title.required' => 'please enter title!!!'
         ];
     }
+
+    // 標準で設定したattributesの日本語設定をオーバーライドする方法
+    public function attributes()
+    {
+        return [
+            'body' => '本文',
+            'title' => 'タイトル',
+        ];
+    }
 }
