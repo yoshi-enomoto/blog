@@ -11,6 +11,21 @@
         Blog Posts
         {{ $dt }}
     </h1>
+
+    {{-- searchフォーム --}}
+    <form action="{{ route('posts.index') }}" method="get" style="border-bottom: 1px solid #ddd; padding-bottom: 10px;
+  margin-bottom: 15px;
+">
+        {{-- search --}}
+        <label for="keyword" style="font-weight: bold;">search title</label>
+        <input type="text" name="filter[keyword]" id="keyword" value="{{ request('filter.keyword') }}" style="width: 150px;">
+        <button type="submit">search</button>
+            {{-- formタグで『posts.index』アクセス、かつクエリを送信 --}}
+        {{-- searchクリア --}}
+        <a class="searchButton" href="{{ route('posts.index') }}">clear</a>
+            {{-- aタグリンクで『posts.index』アクセスして、クエリをリセット --}}
+    </form>
+
     <ul>
         {{-- レコードのカラムに空がある場合の構造 --}}
         @forelse ($posts as $post)

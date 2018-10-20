@@ -10,6 +10,8 @@ use \App\Http\Requests\StorePostRequest;
 use \App\Http\Requests\UpdatePostRequest;
 use \App\Comment;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+    // indexの引数で使用する為、再度使用。
 
 class PostController extends Controller
 {
@@ -18,7 +20,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
+        // searchでの入力内容を$requestで受け取る為
+    // public function index()
         // ルーティングのURLパラメータで値を渡していないなら、引数は必要はない。
     {
         // $posts = \App\Post::all();
@@ -26,7 +30,15 @@ class PostController extends Controller
         // $posts = Post::all();
             // 『use』で定義している場合の記述
 
-        $posts = Post::latest()->get();
+        // indexからsearchワードを受け取る
+        $filterSearch = $request->input('filter.keyword');
+            // 配列の入力フォームは、ドット記法で配列へアクセスできる。
+
+        // whereメソッドを追加して、テーブルを絞り込む
+        $posts = Post::latest()->where('title', 'like', "%$filterSearch%")->get();
+            // like句を使用。かつ、ワイルドカードを前後に用いる。
+
+        // $posts = Post::latest()->get();
             // 下記と同じ意味
         // $posts = Post::orderBy('created_at', 'desc')->get();
         // $posts =[];

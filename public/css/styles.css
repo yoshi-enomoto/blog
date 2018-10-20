@@ -58,3 +58,13 @@ h2 {
   font-size: 14px;
   padding-top: 25px;
 }
+
+.searchButton {
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+  border-style: solid;
+  border-width: 1px;
+  padding: 1px 7px 2px;
+  color: black;
+  text-decoration: none;
+  cursor: default;
+}
