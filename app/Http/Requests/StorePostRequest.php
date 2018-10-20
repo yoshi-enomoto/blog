@@ -37,7 +37,11 @@ class StorePostRequest extends FormRequest
         // validationのエラーメッセージをカスタマイズしたい場合に記述。
     {
         return [
-            'title.required' => 'please enter title!!!'
+            // Requestに記述することで、validation.phpをオーバーライドすることが可能。
+            'title.required' => 'please enter title!!!',
+            // 複数設定している場合、上記と下記のようにセクションを分けて記述する
+            // 下記をコメントアウトすれば、validation.phpの方が適用される。
+            'title.min' => 'タイトルは最小でも3文字ですよ〜',
         ];
     }
 
