@@ -74,19 +74,20 @@ class PostController extends Controller
         $dataToday = Carbon::now()->format('Y-m-d');
             // stringで取得
         $dataToday = Carbon::create(2000, 12, 12);
+        $dataToday = Carbon::now();
             // objectで取得
 
         $dataCreated = $post->created_at;
             // objectで取得
             // いつもの見にくい形式
-
         $dataCreated = $post->created_at->format('Y-m-d');
             // stringで取得
             // そのバリューのみ取得
         $dataCreated = Carbon::create(2000, 11, 12);
+        $dataCreated = $post->created_at;
+            // objectで取得
 
         // dd($dataCreated);
-
         // dd(gettype($dataToday));
             // 型の判断
 
