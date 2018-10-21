@@ -23,12 +23,22 @@ class CommentController extends Controller
         // $comment->body = $request->body;
         // $comment->save();
 
+        // 保存その1
         // $comment = new Comment();
             // 直接値を渡すことが可能なので、下記のようにも記述できる。
-        $comment = new Comment(['body' => $request->body]);
-        $post->comments()->save($comment);
+        // $comment = new Comment(['body' => $request->body]);
+        // $post->comments()->save($comment);
             // $postに紐付いた形でセーブの意味。
             // 『->comments()』はモデルPostで定めたメソッド。
+            // これだと、fillableに『$post_id』の記載がなくても保存可能っぽい。
+
+        // 保存その2
+        Comment::create(
+            array(
+                'body' => $request->body,
+                'post_id' => $post->id,
+            )
+        );
 
         return redirect()->route('posts.show', $post);
             // 第２引数に該当するパラメータを指定することで渡すことが可能。（routeメソッド）

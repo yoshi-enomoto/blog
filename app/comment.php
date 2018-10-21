@@ -10,7 +10,12 @@ class comment extends Model
 {
     use softDeletes;
 
-    protected $fillable = ["body"];
+    // protected $fillable = ["body"];
+    protected $fillable =
+    [
+      "body",
+      "post_id"
+    ];
 
     protected $dates =
     [
