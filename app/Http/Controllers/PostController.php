@@ -9,6 +9,9 @@ use \App\Post;
 use \App\Http\Requests\StorePostRequest;
 use \App\Http\Requests\UpdatePostRequest;
 use \App\Comment;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+    // indexの引数で使用する為、再度使用。
 
 class PostController extends Controller
 {
@@ -17,7 +20,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
+        // searchでの入力内容を$requestで受け取る為
+    // public function index()
         // ルーティングのURLパラメータで値を渡していないなら、引数は必要はない。
     {
         // $posts = \App\Post::all();
@@ -25,7 +30,15 @@ class PostController extends Controller
         // $posts = Post::all();
             // 『use』で定義している場合の記述
 
-        $posts = Post::latest()->get();
+        // indexからsearchワードを受け取る
+        $filterSearch = $request->input('filter.keyword');
+            // 配列の入力フォームは、ドット記法で配列へアクセスできる。
+
+        // whereメソッドを追加して、テーブルを絞り込む
+        $posts = Post::latest()->where('title', 'like', "%$filterSearch%")->get();
+            // like句を使用。かつ、ワイルドカードを前後に用いる。
+
+        // $posts = Post::latest()->get();
             // 下記と同じ意味
         // $posts = Post::orderBy('created_at', 'desc')->get();
         // $posts =[];
@@ -36,7 +49,10 @@ class PostController extends Controller
         // dd($posts->toArray());
             // デバック法（配列に格納して表示）
 
-        return view('posts.index', compact('posts'));
+        $dt = Carbon::now();
+        $dt = Carbon::now('Asia/Tokyo');
+
+        return view('posts.index', compact('posts', 'dt'));
             // 下記と同じ
         // return view('posts.index', ['posts' => $posts]);
         // return view('posts.index')->with('posts', $posts);
@@ -63,7 +79,42 @@ class PostController extends Controller
             // $idでデータが見つからなかった場合に例外を返す場合。
         // $post = Post::find($post);
 
-        return view('posts.show', compact('post'));
+
+    // Carbonによるテストソーン
+        // $dt = new Carbon('today');
+        // $dt = Carbon::now();
+        $dataToday = Carbon::now()->format('Y-m-d');
+            // stringで取得
+        $dataToday = Carbon::create(2000, 12, 12);
+        $dataToday = Carbon::now();
+            // objectで取得
+
+        $dataCreated = $post->created_at;
+            // objectで取得
+            // いつもの見にくい形式
+        $dataCreated = $post->created_at->format('Y-m-d');
+            // stringで取得
+            // そのバリューのみ取得
+        $dataCreated = Carbon::create(2000, 11, 12);
+        $dataCreated = $post->created_at;
+            // objectで取得
+
+        // dd($dataCreated);
+        // dd(gettype($dataToday));
+            // 型の判断
+
+        var_dump($dataCreated->gt($dataToday));
+            // objectで比較する必要あり
+
+        // var_dump($dt1->gt($dt2));
+            // 「より大きい」：左が右より大きいか＝右の日付が後か
+        // var_dump($dt1->gte($dt2));
+            // 「以上」
+        // var_dump($dt1->lt($dt2));
+            // 「より小さい」：左が右より小さいか＝右の日付が先か
+    // Carbonによるテストソーン
+
+        return view('posts.show', compact('post', 'dataCreated', 'dataToday'));
     }
 
     /**
@@ -93,14 +144,35 @@ class PostController extends Controller
         //     'body' => 'required'
         // ]);
 
-        $post = new Post();
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->save();
+        // 書き方1
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->body = $request->body;
+        // $post->save();
+
+        // 書き方2
+        Post::create(
+            array(
+                'title' => $request->title,
+                'body' => $request->body,
+            )
+        );
+        // Post::create(
+        //     [
+        //         'title' => $request->title,
+        //         'body' => $request->body,
+        //     ]
+        // );
+
+        // ※書き方3
+        // $post = Post::create( $request->all() );
+            // 1行で書けるが、許可してないパラメータまでも受け取り、場合によっては危険。(fillableで許可することとは異なる)
 
         // リダイレクト：ルーティングを通り、コントローラ→ビューと流れる。
         //  ＝ビュー内の変数が表示可能。
         return redirect()->route('posts.index');
+        // return redirect('/');
+            // 引数に渡すことで、そこにアクセスする。
 
         // 『view』はビューページのみを出力する（レンダリング）
         //  ＝ビュー内の変数情報は渡されていない。
@@ -134,11 +206,22 @@ class PostController extends Controller
     {
         // dd($post);
         // ここでチェックをすると分かるとおり、まだ『$post』には更新値が入っていない。
-        $post->title = $request->title;
-        $post->body = $request->body;
-        // dd($post);
-        // ここでチェックでは、『$post』の規定の場所に更新値が入っている。
-        $post->save();
+
+        // updateの書き方1
+        // $post->title = $request->title;
+        // $post->body = $request->body;
+        // // dd($post);
+        // // ここでチェックでは、『$post』の規定の場所に更新値が入っている。
+        // $post->save();
+
+        // updateの書き方2
+        $post->update(
+            array(
+                'title' => $request->title,
+                'body' => $request->body,
+            )
+        );
+
         return redirect()->route('posts.index');
     }
 
@@ -150,7 +233,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        // destroyの書き方1
         $post->delete();
+
+        // destroyの書き方2
+        // Post::destroy($post->id);
 
         return redirect()->route('posts.index');
     }
