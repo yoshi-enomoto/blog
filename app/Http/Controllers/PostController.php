@@ -144,10 +144,27 @@ class PostController extends Controller
         //     'body' => 'required'
         // ]);
 
-        $post = new Post();
-        $post->title = $request->title;
-        $post->body = $request->body;
-        $post->save();
+        // 書き方1
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->body = $request->body;
+        // $post->save();
+
+        // 書き方2
+        Post::create(
+            array(
+                'title' => $request->title,
+                'body' => $request->body,
+            )
+        );
+        // Post::create(
+        //     [
+        //         'title' => $request->title,
+        //         'body' => $request->body,
+        //     ]
+        // );
+
+        // ※書き方3
         // $post = Post::create( $request->all() );
             // 1行で書けるが、許可してないパラメータまでも受け取り、場合によっては危険。(fillableで許可することとは異なる)
 
@@ -189,11 +206,22 @@ class PostController extends Controller
     {
         // dd($post);
         // ここでチェックをすると分かるとおり、まだ『$post』には更新値が入っていない。
-        $post->title = $request->title;
-        $post->body = $request->body;
-        // dd($post);
-        // ここでチェックでは、『$post』の規定の場所に更新値が入っている。
-        $post->save();
+
+        // updateの書き方1
+        // $post->title = $request->title;
+        // $post->body = $request->body;
+        // // dd($post);
+        // // ここでチェックでは、『$post』の規定の場所に更新値が入っている。
+        // $post->save();
+
+        // updateの書き方2
+        $post->update(
+            array(
+                'title' => $request->title,
+                'body' => $request->body,
+            )
+        );
+
         return redirect()->route('posts.index');
     }
 
@@ -205,7 +233,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        // destroyの書き方1
         $post->delete();
+
+        // destroyの書き方2
+        // Post::destroy($post->id);
 
         return redirect()->route('posts.index');
     }
