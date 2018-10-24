@@ -3,6 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+// Mailクラスのuse（Mail::toで使用）
+use Illuminate\Support\Facades\Mail;
+// SampleNotificationクラスのuse（インスタンス？としてnewする為）
+use App\Mail\SampleNotification;
 
 class SendMailCommand extends Command
 {
