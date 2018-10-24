@@ -42,5 +42,7 @@ class SampleController extends Controller
             //     ->send(new SampleNotification($name, $text));
 
         // 必要に応じて、送信メールドライバの設定を変更する（.envファイル）
+        // ドライバの設定を変更した場合、キャッシュクリアをする必要あり。
+        // 『php artisan cache:clear』『php artisan config:cache』
     }
 }
