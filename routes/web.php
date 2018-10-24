@@ -32,3 +32,8 @@ Route::resource('posts', 'PostController');
 // Route::delete('/posts/{post}', 'PostsController@destroy');
 
 Route::resource('posts.comments', 'CommentController', ['only' => ['store', 'destroy']]);
+
+// 送信メール本文のプレビュー用ルーティング
+Route::get('sample/mailable/preview', function(){
+    return new App\Mail\SampleNotification();
+});
