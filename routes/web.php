@@ -37,3 +37,6 @@ Route::resource('posts.comments', 'CommentController', ['only' => ['store', 'des
 Route::get('sample/mailable/preview', function(){
     return new App\Mail\SampleNotification();
 });
+// メール送信実行用ルーティング
+Route::get('sample/mailable/send', 'SampleController@SampleNotification');
+    // URLを入力することで送信（コントローラーのアクションが実行）される。
