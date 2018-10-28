@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             PostsTableSeeder::class,
+            // Factoryで生成する場合もここに加える！
+            CommentsTableSeeder::class,
         ]);
     }
 }
