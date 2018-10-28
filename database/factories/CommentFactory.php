@@ -2,9 +2,11 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+// $factory->define(Model::class, function (Faker $faker) {
+    // 初期記述
+$factory->define(App\Comment::class, function (Faker $faker) {
     return [
-        'post_id' => $faker->numberBetween($min = 18, $max = 30),
+        'post_id' => $faker->numberBetween($min = 1, $max = 13),
         'body' => $faker->realText($maxNbChars = 20, $indexSize = 1),
         'created_at' => $faker->dateTime($max = 'now', $timezone = date_default_timezone_get()),
         'updated_at' => $faker->dateTime($max = 'now', $timezone = date_default_timezone_get()),
@@ -17,4 +19,3 @@ $factory->define(Model::class, function (Faker $faker) {
         // 'release_dt' => $faker->dateTime($max = 'now', $timezone = date_default_timezone_get()),
     ];
 });
-18
