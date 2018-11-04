@@ -6,6 +6,11 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateDeptsTable extends Migration
 {
+    // Eloquentではテーブルの主キーをidカラム名と想定しており、この規約をオーバーライドする。
+    protected $primaryKey = 'dept_id';
+    // 自動増分ではない、もしくは整数値ではない主キーを使う場合、falseをセットする。
+    public $incrementing = false;
+
     /**
      * Run the migrations.
      *
@@ -14,8 +19,8 @@ class CreateDeptsTable extends Migration
     public function up()
     {
         Schema::create('depts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('dept_id')->primary();
+            $table->string('dept_name', 32);
         });
     }
 
