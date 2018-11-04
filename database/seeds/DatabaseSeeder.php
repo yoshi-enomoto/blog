@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             PostsTableSeeder::class,
             // Factoryで生成する場合もここに加える！
             CommentsTableSeeder::class,
+            DeptsTableSeeder::class,
+            EmployeesTableSeeder::class,
         ]);
     }
 }
