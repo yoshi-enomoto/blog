@@ -12,11 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            PostsTableSeeder::class,
-            // Factoryで生成する場合もここに加える！
-            CommentsTableSeeder::class,
-            DeptsTableSeeder::class,
-            EmployeesTableSeeder::class,
+            // PostsTableSeeder::class,
+            // // Factoryで生成する場合もここに加える！
+            // CommentsTableSeeder::class,
+            // DeptsTableSeeder::class,
+            // EmployeesTableSeeder::class,
+            NodesTableSeeder::class,
         ]);
     }
 }
