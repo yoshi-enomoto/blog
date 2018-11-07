@@ -16,7 +16,8 @@ class CreateNodesTable extends Migration
         Schema::create('nodes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('parent');
+            // nullを許可する
+            $table->integer('parent')->nullable();
         });
     }
 
