@@ -55,7 +55,6 @@ class StorePostRequest extends FormRequest
     }
 
     // 独自のバリデーションルール
-    // [WIP]現状の仕様だと、下記に該当した場合、エラーメッセが表示されない。
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
@@ -81,8 +80,14 @@ class StorePostRequest extends FormRequest
                 $this->title == "湿夏"
             )
             {
-                $validator->errors()->add('field', 'aikoのアルバムのタイトルは正式名称を入力して下さい。');
+                // notificationエリアを作成している場合の通知
+                // $validator->errors()->add('field', 'aikoのアルバムのタイトルは正式名称を入力して下さい。');
+
+                // add()によってキーとバリューを加えるイメージ？
+                $validator->errors()->add('title', 'aikoのアルバムのタイトルは正式名称を入力して下さい。');
             }
+            eval(\Psy\SH());
+            dd($request);
         });
     }
 }
