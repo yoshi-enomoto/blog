@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        // 作成した独自のコマンドを記載しているクラス名を記述。
+        \App\Console\Commands\SendMailCommand::class,
     ];
 
     /**
@@ -26,6 +27,13 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        // コマンドの実行間隔を指定
+        // コマンドは登録名と同じ
+        $schedule->command('app:email:send')
+                 // ->hourly();
+                 ->everyFiveMinutes();
+                    // 実行時間の確認用
     }
 
     /**
