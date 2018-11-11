@@ -31,12 +31,12 @@
         @forelse ($posts as $post)
             <li>
                 <a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
-                <a href="{{ route('posts.edit', $post) }}" classs="edit" onclick="return window.confirm('本当にこの登録を消しますか？')">[edit]</a>
+                <a href="{{ route('posts.edit', $post) }}" classs="edit">[edit]</a>
 
                 {{-- リンク先をダミーにして、formで行う --}}
                 {{-- その場合、aタグとformタグを紐付ける記述（属性）を書く --}}
                 {{-- 普段は、「type="submit"」のボタンを押下すると、<form>タグのaction属性で設定されたプログラムを呼び出す処理が始まる。 --}}
-                <a href="#" class="del" data-id="{{ $post->id }}">[x]</a>
+                <a href="#" class="del" data-id="{{ $post->id }}" onclick="return window.confirm('本当にこの登録を消しますか？')">[x]</a>
                     {{-- data属性を仕込む。
                          →特定の [x] をクリックした時に対応する form の id を取得する為に。
                          ＝生成後、『』となる。
