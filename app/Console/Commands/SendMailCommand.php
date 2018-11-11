@@ -69,6 +69,7 @@ class SendMailCommand extends Command
         $name = 'コマンド次郎';
         $text = '今後ともご贔屓に。';
         $to = 'try@gmail.com';
+            // 確認時には実メールアドレスに変更！
         Mail::to($to)->send(new SampleNotification($name, $text));
     }
 }

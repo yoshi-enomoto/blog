@@ -31,7 +31,9 @@ class Kernel extends ConsoleKernel
         // コマンドの実行間隔を指定
         // コマンドは登録名と同じ
         $schedule->command('app:email:send')
-                 ->hourly();
+                 // ->hourly();
+                 ->everyFiveMinutes();
+                    // 実行時間の確認用
     }
 
     /**
