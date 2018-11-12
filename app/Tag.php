@@ -12,6 +12,11 @@ class Tag extends Model
 
     protected $fillable = ["slug", "title"];
 
+    protected $dates =
+    [
+        'deleted_at',
+    ];
+
     public function posts()
     {
         return $this->belongsToMany(Post::class);
