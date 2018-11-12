@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             // CommentsTableSeeder::class,
             // DeptsTableSeeder::class,
             // EmployeesTableSeeder::class,
-            NodesTableSeeder::class,
+            // NodesTableSeeder::class,
+            TagsTableSeeder::class,
         ]);
     }
 }
