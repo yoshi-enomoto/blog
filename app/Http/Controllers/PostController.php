@@ -12,6 +12,8 @@ use \App\Comment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
     // indexの引数で使用する為、再度使用。
+use \App\Tag;
+
 
 class PostController extends Controller
 {
@@ -124,7 +126,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create', compact('tags'));
     }
 
     /**
