@@ -44,6 +44,14 @@
         @else
           <p style="color: red;">{!! nl2br(e($post->body)) !!}</p>
         @endif
+    <h2>Tags</h2>
+    <p>
+        @forelse ($tags as $tag)
+            <span>-{{ $tag->title }}-</span>
+        @empty
+            no tags
+        @endforelse
+    </p>
 
 
     <h2>Comments</h2>
