@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
+use \App\Http\Requests\StoreTagRequest;
 
 class TagController extends Controller
 {
@@ -25,7 +26,7 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTagRequest $request)
     {
         $requests = array_filter($request->input('tags'));
 
