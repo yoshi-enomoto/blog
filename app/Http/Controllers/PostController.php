@@ -154,12 +154,16 @@ class PostController extends Controller
         // $post->save();
 
         // 書き方2
-        Post::create(
+        $post = Post::create(
             array(
                 'title' => $request->title,
                 'body' => $request->body,
             )
         );
+        // 送られてくるtagsの中で、nullがあった場合除外する
+        $checkArray=array_filter($request->tags);
+        // post_idにcheckを通過した配列を要素1つずつ中間テーブルに保存する処理
+        $post->tags()->attach($checkArray);
         // Post::create(
         //     [
         //         'title' => $request->title,
