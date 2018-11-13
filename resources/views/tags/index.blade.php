@@ -22,6 +22,19 @@
             <li>No tags</li>
         @endforelse
     </ul>
+
+    <form action="{{ route('tags.store') }}" method="post">
+        {{ csrf_field() }}
+        @for ($i = 0; $i <3 ; $i++)
+            <p>
+                <input type="text" name="tags[{{ $i }}]" placeholder="type a tag if you have" value="{{ old('tags.$i') }}">
+                <span class="error">{{ $errors->first('tags.$i') }}</span>
+            </p>
+        @endfor
+        <input type="submit" value="add">
+    </form>
+
+
     <script src="/js/main.js"></script>
         {{-- 削除機能に対応するjsを読み込ませる --}}
 @endsection

@@ -27,7 +27,17 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $requests = array_filter($request->input('tags'));
+
+        foreach($requests as $value)
+        {
+            $tag = new Tag();
+            $tag->title = $value;
+            $tag->slug = "hatena";
+            $tag->save();
+        }
+
+        return redirect()->route('tags.index');
     }
 
     /**
