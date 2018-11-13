@@ -57,7 +57,7 @@
                         <input type="submit" class="del" value="[x]">
  --}}
                             {{-- 削除表示がボタンとなる。 --}}
-                </form>
+                {{-- </form> --}}
 
             </li>
                 {{-- 推奨：『artisan route:list』に表示されるnameで記載可能。
