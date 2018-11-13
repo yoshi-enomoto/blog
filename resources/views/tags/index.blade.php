@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>
-        <a href="{{ route('tags.index') }}" class="header-menu">back</a>
+        <a href="{{ route('posts.index') }}" class="header-menu">back</a>
         Tags List
     </h1>
 

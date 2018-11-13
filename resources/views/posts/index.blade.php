@@ -8,6 +8,7 @@
 @section('content')
     <h1>
         <a href="{{ route('posts.create') }}" class="header-menu">New Post</a>
+        <a href="{{ route('tags.index') }}" class="header-menu">Tag List</a>
         Blog Posts
         {{ $dt }}
     </h1>
