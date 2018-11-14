@@ -49,6 +49,11 @@
             ・&#64;component~&#64;endcomponent間は値として渡される。<br>
             ・その間に&#64;slot()~&#64;endslotがあると、<br>引数で与えている変数に渡された先で代入される？
         @endcomponent
+        <br>
+        <br>
+        下記、定義したカスタムディレクティブ<br>
+        @aiko('osaka')<br>
+        @aiko('tokyo')
     </div>
 
     {{-- searchフォーム --}}
