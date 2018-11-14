@@ -13,6 +13,18 @@
         {{ $dt }}
     </h1>
 
+    {{-- @includeを使うサブビュー --}}
+    <div style="border-bottom: 1px solid #ddd; margin-bottom: 15px; padding-bottom: 10px">
+        {{-- 静的挿入 --}}
+        @include('partials.section1')
+        <br>
+        {{-- 動的挿入 --}}
+        @include('partials.section2', [
+            'type' => 'success',
+            'name' => 'システム部',
+        ])
+    </div>
+
     {{-- searchフォーム --}}
     <form action="{{ route('posts.index') }}" method="get" style="border-bottom: 1px solid #ddd; padding-bottom: 10px;
   margin-bottom: 15px;
