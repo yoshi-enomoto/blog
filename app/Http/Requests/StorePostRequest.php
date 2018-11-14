@@ -86,8 +86,6 @@ class StorePostRequest extends FormRequest
                 // add()によってキーとバリューを加えるイメージ？
                 $validator->errors()->add('title', 'aikoのアルバムのタイトルは正式名称を入力して下さい。');
             }
-            eval(\Psy\SH());
-            dd($request);
         });
     }
 }
