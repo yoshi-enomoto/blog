@@ -30,6 +30,40 @@
             @endif
         </p>
         <p>
+            <select name="tags[]">
+                <option value="">please select something</option>
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                @endforeach
+            </select>
+        </p>
+        <p>
+            <select name="tags[]">
+                <option value="">please select something</option>
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                @endforeach
+            </select>
+        </p>
+        <p>
+            <select name="tags[]">
+                <option value="">please select something</option>
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                @endforeach
+            </select>
+        </p>
+        {{-- wip：入力から作成用 --}}
+{{--         <p>
+            <input type="text" name="tags[]" placeholder="enter tag" value={{ old('tags.0') }}>
+        </p>
+        <p>
+            <input type="text" name="tags[]" placeholder="enter tag" value={{ old('tags.0') }}>
+        </p>
+        <p>
+            <input type="text" name="tags[]" placeholder="enter tag" value={{ old('tags.0') }}>
+        </p>
+ --}}        <p>
             <textarea name="body" placeholder="enter body">{{ old('body') }}</textarea>
             @if ($errors->has('body'))
                 <span class="error">{{ $errors->first('body') }}</span>

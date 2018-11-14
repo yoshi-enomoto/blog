@@ -33,6 +33,8 @@ Route::resource('posts', 'PostController');
 
 Route::resource('posts.comments', 'CommentController', ['only' => ['store', 'destroy']]);
 
+Route::resource('tags', 'TagController', ['only' => ['index', 'destroy', 'store']]);
+
 // 送信メール本文のプレビュー用ルーティング
 Route::get('sample/mailable/preview', function(){
     return new App\Mail\SampleNotification();

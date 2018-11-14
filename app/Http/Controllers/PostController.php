@@ -12,6 +12,8 @@ use \App\Comment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
     // indexの引数で使用する為、再度使用。
+use \App\Tag;
+
 
 class PostController extends Controller
 {
@@ -114,7 +116,9 @@ class PostController extends Controller
             // 「より小さい」：左が右より小さいか＝右の日付が先か
     // Carbonによるテストソーン
 
-        return view('posts.show', compact('post', 'dataCreated', 'dataToday'));
+        $tags = $post->tags;
+
+        return view('posts.show', compact('post', 'dataCreated', 'dataToday', 'tags'));
     }
 
     /**
@@ -124,7 +128,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create', compact('tags'));
     }
 
     /**
@@ -151,12 +156,16 @@ class PostController extends Controller
         // $post->save();
 
         // 書き方2
-        Post::create(
+        $post = Post::create(
             array(
                 'title' => $request->title,
                 'body' => $request->body,
             )
         );
+        // 送られてくるtagsの中で、nullがあった場合除外する
+        $checkArray=array_filter($request->tags);
+        // post_idにcheckを通過した配列を要素1つずつ中間テーブルに保存する処理
+        $post->tags()->attach($checkArray);
         // Post::create(
         //     [
         //         'title' => $request->title,
