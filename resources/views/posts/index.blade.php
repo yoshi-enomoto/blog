@@ -53,7 +53,8 @@
         <br>
         下記、定義したカスタムディレクティブ<br>
         @aiko('osaka')<br>
-        @aiko('tokyo')
+        @aiko('tokyo')<br>
+        {{-- @aiko(['kyoto']) --}}
     </div>
 
     {{-- searchフォーム --}}
