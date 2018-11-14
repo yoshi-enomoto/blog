@@ -38,6 +38,17 @@
             ログイン情報が間違っています。<br>
             <strong>これを含めた3文はindexから渡している。</strong>
         @endcomponent
+        @component('components.alert3')
+            何か間違いが生じてるってよ！<br>
+            @slot('title')
+                渓谷！
+            @endslot
+            <br>
+            上記2つを逆転させて記載してみた<br>
+            その事から考察出来る事は、<br>
+            ・&#64;component~&#64;endcomponent間は値として渡される。<br>
+            ・その間に&#64;slot()~&#64;endslotがあると、<br>引数で与えている変数に渡された先で代入される？
+        @endcomponent
     </div>
 
     {{-- searchフォーム --}}
