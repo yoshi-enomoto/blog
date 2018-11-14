@@ -25,6 +25,21 @@
         ])
     </div>
 
+    {{-- コンポーネントとスロット --}}
+        {{-- @~@の間の値をテンプレートに渡すことができる --}}
+    <div style="border-bottom: 1px solid #ddd; margin-bottom: 15px; padding-bottom: 10px">
+        @component('components.alert1')
+            This is the alert message here.also just write letters.<br>
+            but I don't know why this line is only one.<br>
+            it's confuse.<br>
+        @endcomponent
+        @component('components.alert2')
+            <strong>エラー！</strong><br>
+            ログイン情報が間違っています。<br>
+            <strong>これを含めた3文はindexから渡している。</strong>
+        @endcomponent
+    </div>
+
     {{-- searchフォーム --}}
     <form action="{{ route('posts.index') }}" method="get" style="border-bottom: 1px solid #ddd; padding-bottom: 10px;
   margin-bottom: 15px;
