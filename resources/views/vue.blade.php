@@ -13,4 +13,6 @@
         {{-- id="app"のルート設置はdefault.blade.phpに設置している --}}
         {{-- bladeファイルには、『.vue』を定義したものを差し込むのみ --}}
         <vue0-component></vue0-component>
+        <br>
+        <vue1-component></vue1-component>
 @endsection
