@@ -35,6 +35,11 @@ Route::resource('posts.comments', 'CommentController', ['only' => ['store', 'des
 
 Route::resource('tags', 'TagController', ['only' => ['index', 'destroy', 'store']]);
 
+// vue.jsを表示するページ
+Route::get('vue', function () {
+    return view('vue');
+});
+
 // 送信メール本文のプレビュー用ルーティング
 Route::get('sample/mailable/preview', function(){
     return new App\Mail\SampleNotification();
