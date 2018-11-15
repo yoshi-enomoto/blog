@@ -40,6 +40,10 @@ Route::resource('tags', 'TagController', ['only' => ['index', 'destroy', 'store'
   Route::get('vue00', function () {
       return view('vue00');
   });
+  // 単一コンポーネントで記述場合（00と同等内容）
+  Route::get('vue', function () {
+      return view('vue');
+  });
 
 
 // 送信メール本文のプレビュー用ルーティング
