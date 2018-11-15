@@ -20,6 +20,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 // vueの練習（ドットインストール）
 Vue.component('vue0-component', require('./components/Vue0Component.vue'));
 Vue.component('vue1-component', require('./components/Vue1Component.vue'));
+Vue.component('vue2-component', require('./components/Vue2Component.vue'));
 
 const app = new Vue({
     el: '#app'

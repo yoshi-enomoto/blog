@@ -15,4 +15,6 @@
         <vue0-component></vue0-component>
         <br>
         <vue1-component></vue1-component>
+        <br>
+        <vue2-component></vue2-component>
 @endsection
