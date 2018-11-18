@@ -25,4 +25,9 @@
         <vue5-component></vue5-component>
         <br>
         <vue6-component></vue6-component>
+        <br>
+        <h2>count</h2>
+        <vue7-component></vue7-component>
+        <vue7-component></vue7-component>
+        <vue7-component></vue7-component>
 @endsection

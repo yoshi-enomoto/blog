@@ -25,6 +25,7 @@ Vue.component('vue3-component', require('./components/Vue3Component.vue'));
 Vue.component('vue4-component', require('./components/Vue4Component.vue'));
 Vue.component('vue5-component', require('./components/Vue5Component.vue'));
 Vue.component('vue6-component', require('./components/Vue6Component.vue'));
+Vue.component('vue7-component', require('./components/Vue7Component.vue'));
 
 const app = new Vue({
     el: '#app'
