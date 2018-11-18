@@ -27,7 +27,22 @@ Vue.component('vue5-component', require('./components/Vue5Component.vue'));
 Vue.component('vue6-component', require('./components/Vue6Component.vue'));
 Vue.component('vue7-component', require('./components/Vue7Component.vue'));
 Vue.component('vue8-component', require('./components/Vue8Component.vue'));
+Vue.component('vue9-component', require('./components/Vue9Component.vue'));
 
 const app = new Vue({
     el: '#app'
+    ,
+    // 親要素に仕込んであるプロパティ？に対して設定する為、ここに記述する。
+    data() {
+        return {
+            // data で total を保持。
+            total: 0
+        }
+    },
+    methods: {
+        // total を +1 するような methods。
+        incrementTotal: function() {
+            this.total++;
+        },
+    }
 });

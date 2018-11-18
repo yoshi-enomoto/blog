@@ -37,4 +37,14 @@
         <vue8-component message="Great"></vue8-component>
         {{-- コンポーネント側からのデフォルト値を表示する場合 --}}
         <vue8-component></vue8-component>
+        <br>
+        {{-- <h2>Total Likes:{{ total }}</h2> --}}
+        <h2>Total Likes:@{{ total }}</h2>
+            {{-- bladeの中でcomponentの変数？を展開する場合は『@』を付ける --}}
+
+        {{-- Component に v-on で increment を仕込み、 increment が呼ばれたときには app の方の incrementTotal を実行する。 --}}
+        <vue9-component message="Like" @increment="incrementTotal"></vue9-component>
+        <vue9-component message="Awesome" @increment="incrementTotal"></vue9-component>
+        <vue9-component message="Great" @increment="incrementTotal"></vue9-component>
+        <vue9-component @increment="incrementTotal"></vue9-component>
 @endsection
