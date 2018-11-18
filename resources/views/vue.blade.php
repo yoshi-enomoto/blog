@@ -30,4 +30,11 @@
         <vue7-component></vue7-component>
         <vue7-component></vue7-component>
         <vue7-component></vue7-component>
+        <br>
+        <h2>count:unique</h2>
+        <vue8-component message="Like"></vue8-component>
+        <vue8-component message="Awesome"></vue8-component>
+        <vue8-component message="Great"></vue8-component>
+        {{-- コンポーネント側からのデフォルト値を表示する場合 --}}
+        <vue8-component></vue8-component>
 @endsection
