@@ -53,4 +53,39 @@ class StorePostRequest extends FormRequest
             'title' => 'タイトル',
         ];
     }
+
+    // 独自のバリデーションルール
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if (
+                $this->title == "好日"
+                ||
+                $this->title == "木の下"
+                ||
+                $this->title == "秋そば"
+                ||
+                $this->title == "暁"
+                ||
+                $this->title == "夢道"
+                ||
+                $this->title == "バビー"
+                ||
+                $this->title == "時シル"
+                ||
+                $this->title == "泡愛"
+                ||
+                $this->title == "メイドリ"
+                ||
+                $this->title == "湿夏"
+            )
+            {
+                // notificationエリアを作成している場合の通知
+                // $validator->errors()->add('field', 'aikoのアルバムのタイトルは正式名称を入力して下さい。');
+
+                // add()によってキーとバリューを加えるイメージ？
+                $validator->errors()->add('title', 'aikoのアルバムのタイトルは正式名称を入力して下さい。');
+            }
+        });
+    }
 }
