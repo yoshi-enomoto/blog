@@ -14,3 +14,5 @@ yarn-error.log
 .phpunit.result.cache
 .env.local
 .env.homestead
+
+public/js/app.js
