@@ -29,6 +29,10 @@ Vue.component('vue7-component', require('./components/Vue7Component.vue'));
 Vue.component('vue8-component', require('./components/Vue8Component.vue'));
 Vue.component('vue9-component', require('./components/Vue9Component.vue'));
 
+// その他練習用ファイル
+Vue.component('aiko-pony', require('./components/AikoPony.vue'));
+Vue.component('love-like-pop', require('./components/LoveLikePop.vue'));
+
 const app = new Vue({
     el: '#app'
     ,
