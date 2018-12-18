@@ -40,6 +40,10 @@ Route::resource('tags', 'TagController', ['only' => ['index', 'destroy', 'store'
   Route::get('vue90', function() {
       return view('vue90');
   });
+  Route::get('vue91', function() {
+      return view('vue91');
+  });
+
   // 単一コンポーネントで記述場合
   Route::get('vue00', function() {
       return view('vue00');
