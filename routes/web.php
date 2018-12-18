@@ -36,14 +36,19 @@ Route::resource('posts.comments', 'CommentController', ['only' => ['store', 'des
 Route::resource('tags', 'TagController', ['only' => ['index', 'destroy', 'store']]);
 
 // vue.jsを表示するページ
-  // .vueを用いない、htmlとjsに記述する（bladeで記述する為、jsを下部に記述）
-  Route::get('vue00', function () {
+  // .vueを用いない、htmlとjsを記述する（bladeで記述する為、jsを下部に記述）
+  Route::get('vue90', function() {
+      return view('vue90');
+  });
+  // 単一コンポーネントで記述場合
+  Route::get('vue00', function() {
       return view('vue00');
   });
-  // 単一コンポーネントで記述場合（00と同等内容）
-  Route::get('vue', function () {
-      return view('vue');
+  // その他練習用単一コンポーネントファイル記載場所
+  Route::get('vue01', function() {
+      return view('vue01');
   });
+
 
 
 // 送信メール本文のプレビュー用ルーティング

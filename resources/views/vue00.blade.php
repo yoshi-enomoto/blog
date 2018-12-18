@@ -1,44 +1,50 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>My Vue App</title>
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
+@extends('layouts.default')
 
-    <body>
-        <!-- vue.jsで扱うUIの領域を定義 -->
-        <div id="app">
-            <!-- <p>Hello @{{ name }}!</p> -->
-                <!-- 同一ページで記述する場合、変数の展開は『@』を付ける（bladeの場合） -->
-            <p>Hello @{{ name.toUpperCase() }}!</p>
-                <!-- dataからUIへの反映：二重波括弧 -->
-                <!-- ※jsの式をそのまま書ける -->
+@section('title', 'Vue00:dotinstall')
 
-            <p><input type="text" v-model="name"></p>
-                <!-- UIからdataへの反映：inputタグの『v-model』にdataのキーを結び付ける -->
-        </div>
+@section('content')
+        <!-- example-component はLaravelに入っているサンプルのコンポーネント -->
+        <example-component></example-component>
+            <!-- div id="app"の中にコンポーネントを書くのが必須 -->
+            <!-- default.blade.phpの大枠にid="app"を指定することで、それを満たす。 -->
 
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-        <script>
-            (function() {
-                'use strict';
+        <br>
+        {{-- 関連付けとnew Vue()はapp.jsで行う --}}
+        {{-- id="app"のルート設置はdefault.blade.phpに設置している --}}
+        {{-- bladeファイルには、『.vue』を定義したものを差し込むのみ --}}
+        <vue0-component></vue0-component>
+        <br>
+        <vue1-component></vue1-component>
+        <br>
+        <vue2-component></vue2-component>
+        <br>
+        <vue3-component></vue3-component>
+        <br>
+        <vue4-component></vue4-component>
+        <br>
+        <vue5-component></vue5-component>
+        <br>
+        <vue6-component></vue6-component>
+        <br>
+        <h2>count</h2>
+        <vue7-component></vue7-component>
+        <vue7-component></vue7-component>
+        <vue7-component></vue7-component>
+        <br>
+        <h2>count:unique</h2>
+        <vue8-component message="Like"></vue8-component>
+        <vue8-component message="Awesome"></vue8-component>
+        <vue8-component message="Great"></vue8-component>
+        {{-- コンポーネント側からのデフォルト値を表示する場合 --}}
+        <vue8-component></vue8-component>
+        <br>
+        {{-- <h2>Total Likes:{{ total }}</h2> --}}
+        <h2>Total Likes:@{{ total }}</h2>
+            {{-- bladeの中でcomponentの変数？を展開する場合は『@』を付ける --}}
 
-                // two way data binding (to UI)
-
-                // UI に結びつくモデルを作る（View Model）＝vm
-                var vm = new Vue({
-
-                    // どの領域の Vue と結びつけるかを elements キーで指定する。
-                    el: '#app',
-
-                    // 更にインスタンス中でdataを保持させる
-                    // キー：data、更にキー＆バリューを指定。
-                    data: {
-                        name: 'someone!（feel free to write below）'
-                    }
-                });
-            })();
-        </script>
-    </body>
-</html>
+        {{-- Component に v-on で increment を仕込み、 increment が呼ばれたときには app の方の incrementTotal を実行する。 --}}
+        <vue9-component message="Like" @increment="incrementTotal"></vue9-component>
+        <vue9-component message="Awesome" @increment="incrementTotal"></vue9-component>
+        <vue9-component message="Great" @increment="incrementTotal"></vue9-component>
+        <vue9-component @increment="incrementTotal"></vue9-component>
+@endsection
