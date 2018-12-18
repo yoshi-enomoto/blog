@@ -16,4 +16,8 @@
     <small>・selectボックス</small><br>
     <small>・ボタン押下による固定選択肢へ変更</small>
     <love-like-pop></love-like-pop>
+
+    <h2>Element UIの使用</h2>
+    <small>・selectボックス</small><br>
+    <baby-peenats></baby-peenats>
 @endsection
