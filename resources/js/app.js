@@ -8,6 +8,12 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// Element UIの導入・使用
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import locale from 'element-ui/lib/locale/lang/ja'
+
+Vue.use(ElementUI, { locale })
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,6 +38,7 @@ Vue.component('vue9-component', require('./components/Vue9Component.vue'));
 // その他練習用ファイル
 Vue.component('aiko-pony', require('./components/AikoPony.vue'));
 Vue.component('love-like-pop', require('./components/LoveLikePop.vue'));
+Vue.component('baby-peenats', require('./components/BabyPeenats.vue'));
 
 const app = new Vue({
     el: '#app'
