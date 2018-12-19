@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>todo list</h3>
-        <input type="text" v-model="input" @keydown.enter="addText()">
+        <input type="text" ref="new_task" v-model="input" @keydown.enter="addText()">
             <!-- keydown.enterでエンター押下でメソッド発動 -->
         <input type="button" value="追加" @click="addText()">
         <ul>
@@ -11,7 +11,9 @@
 
             <li v-for="list in lists" :key="list.id">
                 <span :class="{ complete: list.isComplete}">{{ list.text }}</span>
-                <input type="button" value="完了" @click="list.isComplete=true">
+                <input type="button" v-if="!list.isComplete" value="完了" @click="list.isComplete=true">
+                <input type="button" v-if="list.isComplete" value="戻す" @click="list.isComplete=false">
+                    <!-- 『list.isComplete』のみで条件となる -->
                 <input type="button" value="削除" @click="deleteText(list)">
                     <!-- ここで渡すのは削除ボタンを押す対象のオブジェクト -->
             </li>
@@ -31,7 +33,6 @@
                 ],
                 input: "",
                 id: 4,
-                isComplete: false,
             }
         },
         methods: {
@@ -53,6 +54,11 @@
                 // 選択されたリストはオブジェクト
                 this.lists = this.lists.filter(e => e !== obj);
             }
+        },
+        // テキストボックスへの自動フォーカス：機能せず（エラーは出ない）
+        mounted: function() {
+            console.log(this.$refs.new_task);
+            this.$refs.new_task.focus();
         }
     }
 </script>
