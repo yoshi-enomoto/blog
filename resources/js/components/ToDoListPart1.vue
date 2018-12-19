@@ -2,7 +2,7 @@
     <div>
         <h3>todo list</h3>
         <input type="text" v-model="input">
-        <input type="button" value="追加">
+        <input type="button" value="追加" @click="addText()">
         <ul>
             <li v-for="list in lists" :key="list.id">{{ list.text }}</li>
                 <!-- 『:key』を忘れないようにする！ -->
@@ -22,8 +22,24 @@
                     { id: 3, text: "miwa"},
                 ],
                 input: "",
+                id: 4,
             }
         },
+        methods: {
+            addText() {
+                // テキストボックスが空の場合は処理をスキップ
+                // if(!this.input.trim()) {
+                if(!this.input.length) {
+                    return;
+                };
+                this.lists.push({
+                    id: this.id++,
+                    text: this.input,
+                });
+                // 追加処理の後、テキストボックスを空にする
+                this.input = "";
+            }
+        }
     }
 </script>
 
