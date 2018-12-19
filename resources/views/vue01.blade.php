@@ -21,4 +21,8 @@
     <h2>Element UIの使用</h2>
     <small>・selectボックス</small><br>
     <baby-peenats></baby-peenats>
+
+    <h2>todoList part1</h2>
+    <small>www.shookuro.com/archive/category/vue.js</small><br>
+    <to-do-list-part1></to-do-list-part1>
 @endsection
