@@ -1,7 +1,8 @@
 <template>
     <div>
         <h3>todo list</h3>
-        <input type="text" v-model="input">
+        <input type="text" v-model="input" @keydown.enter="addText()">
+            <!-- keydown.enterでエンター押下でメソッド発動 -->
         <input type="button" value="追加" @click="addText()">
         <ul>
             <!-- <li v-for="list in lists" :key="list.id">{{ list.text }}</li> -->
@@ -11,7 +12,8 @@
             <li v-for="list in lists" :key="list.id">
                 <span :class="{ complete: list.isComplete}">{{ list.text }}</span>
                 <input type="button" value="完了" @click="list.isComplete=true">
-                <input type="button" value="削除" @click="">
+                <input type="button" value="削除" @click="deleteText(list)">
+                    <!-- ここで渡すのは削除ボタンを押す対象のオブジェクト -->
             </li>
         </ul>
             デバック用：{{ input }}
@@ -46,6 +48,10 @@
                 });
                 // 追加処理の後、テキストボックスを空にする
                 this.input = "";
+            },
+            deleteText(obj) {
+                // 選択されたリストはオブジェクト
+                this.lists = this.lists.filter(e => e !== obj);
             }
         }
     }
