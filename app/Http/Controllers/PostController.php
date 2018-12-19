@@ -116,9 +116,10 @@ class PostController extends Controller
             // 「より小さい」：左が右より小さいか＝右の日付が先か
     // Carbonによるテストソーン
 
-        $tags = $post->tags;
+        // $tags = $post->tags;
 
-        return view('posts.show', compact('post', 'dataCreated', 'dataToday', 'tags'));
+        // return view('posts.show', compact('post', 'dataCreated', 'dataToday', 'tags'));
+        return view('posts.show', compact('post', 'dataCreated', 'dataToday'));
     }
 
     /**

@@ -39,6 +39,8 @@ Vue.component('vue9-component', require('./components/Vue9Component.vue'));
 Vue.component('aiko-pony', require('./components/AikoPony.vue'));
 Vue.component('love-like-pop', require('./components/LoveLikePop.vue'));
 Vue.component('baby-peenats', require('./components/BabyPeenats.vue'));
+// コントローラーからの変数を渡す
+Vue.component('love-like-rock', require('./components/LoveLikeRock.vue'));
 
 const app = new Vue({
     el: '#app'
