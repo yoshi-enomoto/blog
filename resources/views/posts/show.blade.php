@@ -46,13 +46,14 @@
         @endif
     <h2>Tags</h2>
     <p>
-        @forelse ($tags as $tag)
+{{--         @forelse ($tags as $tag)
             <span>-{{ $tag->title }}-</span>
         @empty
             no tags
         @endforelse
-    </p>
+ --}}    </p>
 
+    <love-like-rock :post="{{ $post }}"></love-like-rock>
 
     <h2>Comments</h2>
     <ul>

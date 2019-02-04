@@ -13,6 +13,50 @@
         {{ $dt }}
     </h1>
 
+    {{-- @includeを使うサブビュー --}}
+    <div style="border-bottom: 1px solid #ddd; margin-bottom: 15px; padding-bottom: 10px">
+        {{-- 静的挿入 --}}
+        @include('partials.section1')
+        <br>
+        {{-- 動的挿入 --}}
+        @include('partials.section2', [
+            'type' => 'success',
+            'name' => 'システム部',
+        ])
+    </div>
+
+    {{-- コンポーネントとスロット --}}
+        {{-- @~@の間の値をテンプレートに渡すことができる --}}
+    <div style="border-bottom: 1px solid #ddd; margin-bottom: 15px; padding-bottom: 10px">
+        @component('components.alert1')
+            This is the alert message here.also just write letters.<br>
+            but I don't know why this line is only one.<br>
+            it's confuse.<br>
+        @endcomponent
+        @component('components.alert2')
+            <strong>エラー！</strong><br>
+            ログイン情報が間違っています。<br>
+            <strong>これを含めた3文はindexから渡している。</strong>
+        @endcomponent
+        @component('components.alert3')
+            何か間違いが生じてるってよ！<br>
+            @slot('title')
+                渓谷！
+            @endslot
+            <br>
+            上記2つを逆転させて記載してみた<br>
+            その事から考察出来る事は、<br>
+            ・&#64;component~&#64;endcomponent間は値として渡される。<br>
+            ・その間に&#64;slot()~&#64;endslotがあると、<br>引数で与えている変数に渡された先で代入される？
+        @endcomponent
+        <br>
+        <br>
+        下記、定義したカスタムディレクティブ<br>
+        @aiko('osaka')<br>
+        @aiko('tokyo')<br>
+        {{-- @aiko(['kyoto']) --}}
+    </div>
+
     {{-- searchフォーム --}}
     <form action="{{ route('posts.index') }}" method="get" style="border-bottom: 1px solid #ddd; padding-bottom: 10px;
   margin-bottom: 15px;
