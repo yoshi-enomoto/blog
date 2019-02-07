@@ -127,6 +127,14 @@
         {{-- 下記の形だと連想配列で取り出す --}}
         {{-- <li>{{$post}}</li> --}}
     </ul>
+
+    <div>
+        <add-test :aikos="{{ json_encode($posts, JSON_FORCE_OBJECT) }}" :value="{{ json_encode(old('system_administrator_id', null), JSON_FORCE_OBJECT) }}">
+            <template slot="delete-button-text"><i class="fa fa-times"></i> 削除</template>
+            <template slot="add-button-text"><i class="fa fa-plus"></i> 追加</template>
+        </add-test>
+    </div>
+
     <script src="/js/main.js"></script>
         {{-- 削除機能に対応するjsを読み込ませる --}}
 @endsection

@@ -45,6 +45,8 @@ Vue.component('love-like-rock', require('./components/LoveLikeRock.vue'));
 // コントローラーからの変数を渡す
 Vue.component('to-do-list-part1', require('./components/ToDoListPart1.vue'));
 
+Vue.component('add-test', require('./components/AddTest.vue'));
+
 const app = new Vue({
     el: '#app'
     ,
