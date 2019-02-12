@@ -129,7 +129,7 @@
     </ul>
 
     <div>
-        <add-test :aikos="{{ json_encode($posts, JSON_FORCE_OBJECT) }}" :value="{{ json_encode(old('system_administrator_id', null), JSON_FORCE_OBJECT) }}">
+        <add-test :posts="{{ json_encode($posts, JSON_FORCE_OBJECT) }}" :value="{{ json_encode(old('post_id', null), JSON_FORCE_OBJECT) }}">
             <template slot="delete-button-text"><i class="fa fa-times"></i> 削除</template>
             <template slot="add-button-text"><i class="fa fa-plus"></i> 追加</template>
         </add-test>
