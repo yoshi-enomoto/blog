@@ -45,4 +45,6 @@ class SampleController extends Controller
         // ドライバの設定を変更した場合、キャッシュクリアをする必要あり。
         // 『php artisan cache:clear』『php artisan config:cache』
     }
+
+    // test
 }
